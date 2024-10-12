@@ -1,29 +1,47 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 public class MovePlayer1 : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public Movement controller;
-    public float speed = 40f;
-    public float horizontalMove = 0f;
-    bool jump = false;
-    bool crouch = false;
+    private float horizontal;
+    private float speed = 8f;
+    private float jumpingPower = 10f;
+    private bool isFacingRight = true;
+
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundLayer;
+
     void Update()
     {
-        horizontalMove = Input.GetAxisRaw("Horizontal1")* speed;
-        if (Input.GetButtonDown("Jump1"))
-            jump = true;
-        if (Input.GetKeyDown(KeyCode.S)) crouch = true;
-        else if (Input.GetKeyUp(KeyCode.S)) crouch = false;
+       if(IsGrounded()) horizontal = Input.GetAxisRaw("Horizontal1");
+
+        if (Input.GetButtonDown("Jump1") && IsGrounded())
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+        }
+        Flip();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        controller.Move(horizontalMove* Time.fixedDeltaTime, crouch, jump);
-        jump = false;
+        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+    }
 
+    private bool IsGrounded()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+    }
+
+    private void Flip()
+    {
+        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
+        }
     }
 }
+
