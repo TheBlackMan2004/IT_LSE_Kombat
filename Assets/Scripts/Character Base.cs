@@ -9,4 +9,14 @@ public class CharacterBase : MonoBehaviour
     public Ability firstAbility;
     public Ability secondAbility;
     public Ultimate ultimate;
+    public int kickDamage;
+    public int punchDamage;
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+    }
+    public void Update()
+    {
+        
+    }
 }
