@@ -10,8 +10,6 @@ public class MovePlayer1 : MonoBehaviour
     private float currentSpeed2 = 8f;
     public float speed = 8f;
     private float jumpingPower = 10f;
-    private bool isFacingRight = true;
-    private bool isFacingRight2 = false;
     public Collider2D crouchCollider;
     public Collider2D crouchCollider2;
     public Rigidbody2D rb;
@@ -61,8 +59,6 @@ public class MovePlayer1 : MonoBehaviour
             currentSpeed2 = speed;
             crouchCollider2.enabled = true;
         }
-        Flip();
-        Flip2();
     }
  
     private void FixedUpdate()
@@ -77,27 +73,6 @@ public class MovePlayer1 : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
-    }
-
-    private void Flip()
-    {
-        if (isFacingRight && horizontal1 < 0f || !isFacingRight && horizontal1 > 0f)
-        {
-            isFacingRight = !isFacingRight;
-            Vector3 localScale = transform.localScale;
-            localScale.x *= -1f;
-            transform.localScale = localScale;
-        }
-    }
-    private void Flip2()
-    {
-        if (isFacingRight2 && horizontal2 < 0f || !isFacingRight2 && horizontal2 > 0f)
-        {
-            isFacingRight2 = !isFacingRight2;
-            Vector3 localScale = transform.localScale;
-            localScale.x *= -1f;
-            transform.localScale = localScale;
-        }
     }
 }
 
