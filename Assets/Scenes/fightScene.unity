@@ -551,6 +551,12 @@ MonoBehaviour:
     m_Bits: 512
   player1: {fileID: 763543735}
   player2: {fileID: 1194289671}
+  p1ResetPosX: -6.5
+  p1ResetPosY: -4.39
+  p2ResetPosX: 6.2
+  p2ResetPosY: -4.39
+  p1Score: 0
+  p2Score: 0
 --- !u!4 &320680773
 Transform:
   m_ObjectHideFlags: 0
@@ -645,6 +651,133 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &466371858
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 466371860}
+  - component: {fileID: 466371859}
+  m_Layer: 0
+  m_Name: Audio Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &466371859
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466371858}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d8a8fcad5ec107940a7b387688fc8913, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &466371860
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466371858}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.71243703, y: 0.2329962, z: -0.40927687}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &549158925
 GameObject:
@@ -848,9 +981,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  currentHealth: 0
   characterName: Boscanici
-  kickDamage: 0
-  punchDamage: 0
+  kickDamage: 10
+  punchDamage: 10
 --- !u!212 &763543736
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -909,7 +1043,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 763543731}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.81, y: -3.91, z: 0}
+  m_LocalPosition: {x: -6.5, y: -4.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 802598954}
@@ -967,7 +1101,7 @@ MonoBehaviour:
   - {fileID: 2094584909}
   m_Bounds:
     m_Center: {x: -0.0025792122, y: 2.168896, z: 0}
-    m_Extent: {x: 0.9662839, y: 2.12489, z: 0}
+    m_Extent: {x: 0.9662839, y: 2.1248899, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!114 &763543740
@@ -1002,9 +1136,9 @@ MonoBehaviour:
   animator: {fileID: 763543738}
   PctAtacPumn: {fileID: 104636079}
   pctAtacPicior: {fileID: 1607043237}
+  keybindPumn: q
+  keybindPicior: e
   MarimeAtac: 1
-  keyBindPumn: q
-  keyBindPicior: e
   LayerInamici:
     serializedVersion: 2
     m_Bits: 256
@@ -1331,9 +1465,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  currentHealth: 0
   characterName: Guta
-  kickDamage: 0
-  punchDamage: 0
+  kickDamage: 10
+  punchDamage: 10
 --- !u!4 &1194289672
 Transform:
   m_ObjectHideFlags: 0
@@ -1342,7 +1477,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194289670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.03, y: -3.49, z: 0}
+  m_LocalPosition: {x: 6.2, y: -4.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1515896877}
@@ -1464,7 +1599,7 @@ MonoBehaviour:
   - {fileID: 2053500061}
   m_Bounds:
     m_Center: {x: -0.015087783, y: 2.0630448, z: 0}
-    m_Extent: {x: 0.95283455, y: 2.0666895, z: 0}
+    m_Extent: {x: 0.95283455, y: 2.0666893, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!61 &1194289678
@@ -1558,12 +1693,12 @@ MonoBehaviour:
   animator: {fileID: 1194289676}
   PctAtacPumn: {fileID: 104843162}
   pctAtacPicior: {fileID: 1613868230}
+  keybindPumn: k
+  keybindPicior: l
   MarimeAtac: 1
-  keyBindPumn: 
-  keyBindPicior: 
   LayerInamici:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
 --- !u!1 &1200163166
 GameObject:
   m_ObjectHideFlags: 0

@@ -43,7 +43,7 @@ public class CombatJuc : MonoBehaviour
         {
             
             if (enemy.GetComponent<CharacterBase>().characterName != this.GetComponent<CharacterBase>().characterName)
-                enemy.GetComponent<CharacterBase>().TakeDamage(enemy.GetComponent<CharacterBase>().punchDamage);
+                enemy.GetComponent<CharacterBase>().TakeDamage(this.GetComponent<CharacterBase>().punchDamage);
         }
         StartCoroutine(AttackDelay());
         //isAttacking = false;
@@ -58,7 +58,7 @@ public class CombatJuc : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             if (enemy.GetComponent<CharacterBase>().characterName != this.GetComponent<CharacterBase>().characterName)
-                enemy.GetComponent<CharacterBase>().TakeDamage(enemy.GetComponent<CharacterBase>().kickDamage);
+                enemy.GetComponent<CharacterBase>().TakeDamage(this.GetComponent<CharacterBase>().kickDamage);
         }
         StartCoroutine(AttackDelay());
         //isAttacking = false;

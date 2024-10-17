@@ -10,4 +10,8 @@ public class Schimb_de_scene : MonoBehaviour
     {
         SceneManager.LoadScene("fightScene");
     }
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
