@@ -15,6 +15,9 @@ public class Animati_crt : MonoBehaviour
     public string rightButton;
     public string isCrouch ;
    [SerializeField] bool isFacingRight;
+
+    
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -32,6 +35,14 @@ public class Animati_crt : MonoBehaviour
         bool mersDreapta = Input.GetKey(rightButton);
         bool mersStanga = Input.GetKey(leftButton);
         bool crouch = Input.GetKey(isCrouch);
+        if (Input.GetKey(isCrouch))
+        {
+            animator.SetBool("Crouch", true);
+        }
+        else if (!Input.GetKey(isCrouch))
+        {
+            animator.SetBool("Crouch", false);
+        }
         if (!merge && mersDreapta && !crouch)
         {
             animator.SetBool("Merge", true);

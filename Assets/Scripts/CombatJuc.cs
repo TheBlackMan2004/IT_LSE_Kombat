@@ -51,7 +51,7 @@ public class CombatJuc : MonoBehaviour
     void AtacPicior()
     {
         if(!isAttacking)
-            animator.SetTrigger("Atac");
+            animator.SetTrigger("Atac_Picior");
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(pctAtacPicior.position, MarimeAtac, LayerInamici);
 
