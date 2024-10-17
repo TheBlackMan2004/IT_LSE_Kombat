@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterBase : MonoBehaviour
 {
     public int health;
+    public int currentHealth;
     public string characterName;
    /// public Ability firstAbility;
    /// public Ability secondAbility;
@@ -13,7 +14,11 @@ public class CharacterBase : MonoBehaviour
     public int punchDamage;
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        currentHealth -= damage;
+    }
+    public void Start()
+    {
+        currentHealth = health;
     }
     public void Update()
     {

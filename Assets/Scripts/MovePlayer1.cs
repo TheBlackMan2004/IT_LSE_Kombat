@@ -19,6 +19,13 @@ public class MovePlayer1 : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     public CharacterBase player1;
     public CharacterBase player2;
+
+    [SerializeField] float p1ResetPosX = -6.5f;
+    [SerializeField] float p1ResetPosY = -4.39f;
+    [SerializeField] float p2ResetPosX = 6.2f;
+    [SerializeField] float p2ResetPosY = -4.39f;
+    public int p1Score;
+    public int p2Score;
     void Update()
     {
         if (IsGrounded())
@@ -59,6 +66,10 @@ public class MovePlayer1 : MonoBehaviour
             currentSpeed2 = speed;
             crouchCollider2.enabled = true;
         }
+        if(player1.currentHealth<=0 || player2.currentHealth<=0)
+        {
+            ResetScene();
+        }
     }
  
     private void FixedUpdate()
@@ -73,6 +84,17 @@ public class MovePlayer1 : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+    }
+    private void ResetScene()
+    {
+        if (player1.currentHealth <= 0) p2Score++;
+        else p1Score++;
+        if (p2Score == 2) { Debug.Log(player2.characterName + " won"); return; }
+        else if  (p1Score == 2){ Debug.Log(player1.characterName + " won"); return; }
+        player1.transform.position = new Vector3(p1ResetPosX, p1ResetPosY, player1.transform.position.z);
+        player2.transform.position = new Vector3(p2ResetPosX, p2ResetPosY, player2.transform.position.z);
+        player1.currentHealth = player1.health;
+        player2.currentHealth = player2.health;
     }
 }
 

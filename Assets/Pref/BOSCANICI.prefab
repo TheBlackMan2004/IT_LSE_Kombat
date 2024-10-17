@@ -292,11 +292,11 @@ GameObject:
   - component: {fileID: 5385773133587142054}
   - component: {fileID: 5385773133587142056}
   - component: {fileID: 5385773133587142058}
-  - component: {fileID: 5385773133587142057}
   - component: {fileID: 5385773133587142059}
   - component: {fileID: 5385773133587142053}
   - component: {fileID: 5385773133587142052}
   - component: {fileID: 5385773133587142050}
+  - component: {fileID: 4549953571103743834}
   m_Layer: 8
   m_Name: BOSCANICI
   m_TagString: Untagged
@@ -383,7 +383,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.25}
+  m_Offset: {x: 0, y: 1.0998014}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -394,7 +394,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 1, y: 2.1996028}
   m_EdgeRadius: 0
 --- !u!50 &5385773133587142058
 Rigidbody2D:
@@ -417,26 +417,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &5385773133587142057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5385773133587142061}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9ba5ca8e18c7f44db3a61d5d896a439, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentSpeed: 8
-  speed: 8
-  crouchCollider: {fileID: 5385773133587142059}
-  rb: {fileID: 5385773133587142058}
-  groundCheck: {fileID: 5385773133617276212}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!61 &5385773133587142059
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -450,7 +430,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.0677685}
+  m_Offset: {x: -0.11881089, y: 3.224957}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -461,7 +441,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.6262486}
+  m_Size: {x: 1.2376218, y: 1.9692929}
   m_EdgeRadius: 0
 --- !u!114 &5385773133587142053
 MonoBehaviour:
@@ -526,6 +506,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c63170c90905e52489ca0140edfcc666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftButton: 
+  rightButton: 
+  isFacingRight: 0
+--- !u!114 &4549953571103743834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5385773133587142061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b14cdb15f21da9a4db04f751d7013d23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  characterName: 
+  kickDamage: 0
+  punchDamage: 0
 --- !u!1 &5385773133617276215
 GameObject:
   m_ObjectHideFlags: 0

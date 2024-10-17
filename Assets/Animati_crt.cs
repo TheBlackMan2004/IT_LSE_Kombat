@@ -1,12 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.TerrainAPI;
 using UnityEngine;
 
 public class Animati_crt : MonoBehaviour
 {
+    // Apare bg animat
+    public Component backg;
+    
+
+    // Animati pe caracter
     Animator animator;
     public string leftButton;
     public string rightButton;
+    public string isCrouch ;
    [SerializeField] bool isFacingRight;
     void Start()
     {
@@ -24,7 +31,8 @@ public class Animati_crt : MonoBehaviour
         bool merge = animator.GetBool("Merge");
         bool mersDreapta = Input.GetKey(rightButton);
         bool mersStanga = Input.GetKey(leftButton);
-        if (!merge && mersDreapta)
+        bool crouch = Input.GetKey(isCrouch);
+        if (!merge && mersDreapta && !crouch)
         {
             animator.SetBool("Merge", true);
             if(!isFacingRight)
@@ -43,7 +51,7 @@ public class Animati_crt : MonoBehaviour
             animator.SetBool("Merge", false);
         }
 
-        if (!merge && mersStanga)
+        if (!merge && mersStanga && !crouch)
         {
             animator.SetBool("Merge", true);
             if(isFacingRight)
