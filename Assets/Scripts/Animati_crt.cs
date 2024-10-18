@@ -30,7 +30,7 @@ public class Animati_crt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        this.GetComponent<CharacterBase>().facesRight = isFacingRight;
         bool merge = animator.GetBool("Merge");
         bool mersDreapta = Input.GetKey(rightButton);
         bool mersStanga = Input.GetKey(leftButton);

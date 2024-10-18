@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class MovePlayer1 : MonoBehaviour
@@ -24,6 +25,7 @@ public class MovePlayer1 : MonoBehaviour
     [SerializeField] float p1ResetPosY = -4.39f;
     [SerializeField] float p2ResetPosX = 6.2f;
     [SerializeField] float p2ResetPosY = -4.39f;
+    bool canAttack = true;
     public int p1Score;
     public int p2Score;
     void Update()
@@ -70,6 +72,22 @@ public class MovePlayer1 : MonoBehaviour
         {
             ResetScene();
         }
+        if(Input.GetButtonDown("Punch1") && canAttack)
+        {
+            StartCoroutine(Delay1(0.9f));
+        }
+        if (Input.GetButtonDown("Punch2") && canAttack)
+        {
+            StartCoroutine(Delay2(0.9f));
+        }
+        if (Input.GetButtonDown("Kick1") && canAttack)
+        {
+            StartCoroutine(Delay1(1.1f));
+        }
+        if (Input.GetButtonDown("Kick2") && canAttack)
+        {
+            StartCoroutine(Delay2(1.1f));
+        }
     }
  
     private void FixedUpdate()
@@ -95,6 +113,22 @@ public class MovePlayer1 : MonoBehaviour
         player2.transform.position = new Vector3(p2ResetPosX, p2ResetPosY, player2.transform.position.z);
         player1.currentHealth = player1.health;
         player2.currentHealth = player2.health;
+    }
+    IEnumerator Delay1(float delay)
+    {
+        currentSpeed = 0;
+        canAttack = false;
+        yield return new WaitForSeconds(delay);
+        currentSpeed = speed;
+        canAttack = true;
+    }
+    IEnumerator Delay2(float delay)
+    {
+        currentSpeed2 = 0;
+        canAttack = false;
+        yield return new WaitForSeconds(delay);
+        currentSpeed2 = speed;
+        canAttack = true;
     }
 }
 

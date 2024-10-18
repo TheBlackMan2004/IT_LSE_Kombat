@@ -6,16 +6,23 @@ abstract public class Ability : MonoBehaviour
 {
     public float cooldown;
     public float cooldownBase;
+    public string direction;
+    public bool ready = true;
     // Start is called before the first frame update
     void Start()
     {
-        cooldownBase = cooldown;
+        cooldown = cooldownBase;
     }
     private void Update()
     {
-        if (cooldown <= 0) cooldown = cooldownBase;
+        if (cooldown <= 0)
+        {
+            cooldown = cooldownBase;
+            ready = true;
+        }
+
     }
-    IEnumerator CooldownCounter()
+  protected  IEnumerator CooldownCounter()
     {
         while(cooldown>0)
         {
