@@ -5,15 +5,11 @@ using UnityEngine;
 
 public class Animati_crt : MonoBehaviour
 {
-    // Apare bg animat
-    public Component backg;
-    
-
     // Animati pe caracter
     Animator animator;
     public string leftButton;
     public string rightButton;
-    public string isCrouch ;
+    public string isCrouch;
    [SerializeField] bool isFacingRight;
 
     

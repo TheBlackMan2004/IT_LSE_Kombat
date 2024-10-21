@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2384054225257513819
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1175579152014007644, guid: bd98f38b8a5d25a43821c3364432174e,
+        type: 3}
+      propertyPath: thrower
+      value: 
+      objectReference: {fileID: 9118452650221118131, guid: 55edda0765efb8e43b43caf329533a87,
+        type: 3}
+    - target: {fileID: 6427861512974139315, guid: bd98f38b8a5d25a43821c3364432174e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6427861512974139315, guid: bd98f38b8a5d25a43821c3364432174e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6427861512974139315, guid: bd98f38b8a5d25a43821c3364432174e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6427861512974139315, guid: bd98f38b8a5d25a43821c3364432174e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6427861512974139315, guid: bd98f38b8a5d25a43821c3364432174e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6427861512974139315, guid: bd98f38b8a5d25a43821c3364432174e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6427861512974139315, guid: bd98f38b8a5d25a43821c3364432174e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6427861512974139315, guid: bd98f38b8a5d25a43821c3364432174e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6427861512974139315, guid: bd98f38b8a5d25a43821c3364432174e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6427861512974139315, guid: bd98f38b8a5d25a43821c3364432174e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6427861512974139315, guid: bd98f38b8a5d25a43821c3364432174e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6496757705841666254, guid: bd98f38b8a5d25a43821c3364432174e,
+        type: 3}
+      propertyPath: m_Name
+      value: ProiectilGuta
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bd98f38b8a5d25a43821c3364432174e, type: 3}

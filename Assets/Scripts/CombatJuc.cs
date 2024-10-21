@@ -9,7 +9,8 @@ public class CombatJuc : MonoBehaviour
     public Transform pctAtacPicior;
     public string keybindPumn;
     public string keybindPicior;
-    public float MarimeAtac = 0.5f;
+    public float MarimeAtacPumn = 0.5f;
+    public float MarimeAtacPicior = 0.5f;
     bool isAttacking = false;
     public LayerMask LayerInamici;
 
@@ -37,7 +38,7 @@ public class CombatJuc : MonoBehaviour
         if(!isAttacking)
             animator.SetTrigger("Atac");
 
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(PctAtacPumn.position, MarimeAtac, LayerInamici);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(PctAtacPumn.position, MarimeAtacPumn, LayerInamici);
     
         foreach(Collider2D enemy in hitEnemies)
         {
@@ -53,7 +54,7 @@ public class CombatJuc : MonoBehaviour
         if(!isAttacking)
             animator.SetTrigger("Atac_Picior");
 
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(pctAtacPicior.position, MarimeAtac, LayerInamici);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(pctAtacPicior.position, MarimeAtacPicior, LayerInamici);
 
         foreach (Collider2D enemy in hitEnemies)
         {
@@ -67,8 +68,8 @@ public class CombatJuc : MonoBehaviour
     {
         if (PctAtacPumn == null) { return; }
         if(pctAtacPicior == null) { return; }
-        Gizmos.DrawWireSphere(PctAtacPumn.position, MarimeAtac);
-        Gizmos.DrawWireSphere(pctAtacPicior.position, MarimeAtac);
+        Gizmos.DrawWireSphere(PctAtacPumn.position, MarimeAtacPumn);
+        Gizmos.DrawWireSphere(pctAtacPicior.position, MarimeAtacPicior);
     }
     IEnumerator AttackDelay()
     {

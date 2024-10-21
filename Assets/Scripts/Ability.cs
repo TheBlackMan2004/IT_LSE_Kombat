@@ -24,11 +24,13 @@ abstract public class Ability : MonoBehaviour
     }
   protected  IEnumerator CooldownCounter()
     {
-        while(cooldown>0)
+        for(float i = cooldownBase; i>0; i--)
         {
+            if (ready != true)
             cooldown--;
             yield return new WaitForSeconds(1);
         }
+        StopCoroutine("CooldownCounter");
     }
     public virtual void CastAbility() { }
 }

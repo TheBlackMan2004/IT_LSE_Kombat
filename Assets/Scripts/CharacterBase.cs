@@ -9,6 +9,7 @@ public class CharacterBase : MonoBehaviour
     public string characterName;
     public Ability firstAbility;
     public Ability secondAbility;
+    public string firstAbilityKey;
    ///public Ultimate ultimate;
     public int kickDamage;
     public int punchDamage;
@@ -23,11 +24,16 @@ public class CharacterBase : MonoBehaviour
     }
     public void Update()
     {
-        if(Input.GetButtonDown("Ability1"))
+        if (Input.GetButtonDown(firstAbilityKey))
         {
             if (facesRight) firstAbility.direction = "right";
-            else firstAbility.direction = "left";
-            firstAbility.CastAbility();
+                else firstAbility.direction = "left";
+            if(firstAbility.ready==true)
+            {
+                
+                 firstAbility.CastAbility();
+            }
+            
         }    
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MovePlayer1 : MonoBehaviour
 {
+    public GameObject backg;
     private float horizontal1;
     private float horizontal2;
     public float currentSpeed = 8f;
@@ -28,6 +29,10 @@ public class MovePlayer1 : MonoBehaviour
     bool canAttack = true;
     public int p1Score;
     public int p2Score;
+    private void Awake()
+    {
+        backg.SetActive(true);
+    }
     void Update()
     {
         if (IsGrounded())
