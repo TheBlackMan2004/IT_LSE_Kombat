@@ -22,6 +22,9 @@ public class MovePlayer1 : MonoBehaviour
     public CharacterBase player1;
     public CharacterBase player2;
 
+    public HealthBar healthBar1;
+    public HealthBar healthBar2;
+
     [SerializeField] float p1ResetPosX = -6.5f;
     [SerializeField] float p1ResetPosY = -4.39f;
     [SerializeField] float p2ResetPosX = 6.2f;
@@ -29,12 +32,22 @@ public class MovePlayer1 : MonoBehaviour
     bool canAttack = true;
     public int p1Score;
     public int p2Score;
+
+    private void Start()
+    {
+        healthBar1.SetMaxHealth(player1.health);
+        healthBar2.SetMaxHealth(player2.health);
+    }
+
     private void Awake()
     {
         backg.SetActive(true);
     }
     void Update()
     {
+        healthBar1.SetHealth(player1.currentHealth);
+        healthBar2.SetHealth(player2.currentHealth);
+
         if (IsGrounded())
         {
             horizontal1 = Input.GetAxisRaw("Horizontal1");
