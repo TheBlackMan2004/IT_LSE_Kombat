@@ -27,7 +27,7 @@ public class MovePlayer1 : MonoBehaviour
     public CharacterBase player2;
     public HealthBar healthBar1;
     public HealthBar healthBar2;
-
+    [SerializeField] GameObject[] roundsWon;
     [SerializeField] float p1ResetPosX = -6.5f;
     [SerializeField] float p1ResetPosY = -4.39f;
     [SerializeField] float p2ResetPosX = 6.2f;
@@ -35,7 +35,7 @@ public class MovePlayer1 : MonoBehaviour
     bool canAttack = true;
     public int p1Score;
     public int p2Score;
-
+  public  bool isReseting = false;
     private void Start()
     {
         timeCounter = maxTime;
@@ -93,7 +93,8 @@ public class MovePlayer1 : MonoBehaviour
         }
         if(player1.currentHealth<=0 || player2.currentHealth<=0 || timeCounter<=0)
         {
-            ResetScene();
+            if(!isReseting)
+                ResetScene();
         }
         if(Input.GetButtonDown("Punch1") && canAttack)
         {
@@ -128,7 +129,7 @@ public class MovePlayer1 : MonoBehaviour
     }
     private void ResetScene()
     {
-       StartCoroutine(Reset());
+        StartCoroutine(Reset());
     }
     IEnumerator Delay1(float delay)
     {
@@ -148,7 +149,7 @@ public class MovePlayer1 : MonoBehaviour
     }
     IEnumerator Clock()
     {
-        for(int i=maxTime; i>0; i--)
+        while(timeCounter>0)
         {
             timeCounter--;
             timeCounterText.text = timeCounter.ToString();
@@ -157,16 +158,43 @@ public class MovePlayer1 : MonoBehaviour
     }
     IEnumerator Reset()
     {
-        timeCounter = maxTime;
+        isReseting = true;
         yield return new WaitForSeconds(3f);
-        if (player1.currentHealth <= 0) p2Score++;
-        else p1Score++;
+        if (player1.currentHealth <= 0)
+        {
+            p2Score++;
+            roundsWon[p2Score + 1].SetActive(true);
+        }
+        else if(player2.currentHealth<=0)
+        {
+            p1Score++;
+            roundsWon[p1Score - 1].SetActive(true);
+        }
+        else if(timeCounter<=0)
+        {
+            if (player1.currentHealth > player2.currentHealth)
+            {
+                p1Score++;
+                roundsWon[p2Score + 1].SetActive(true);
+            }
+
+            else
+            {
+                p2Score++;
+                roundsWon[p1Score - 1].SetActive(true);
+            }
+
+            timeCounter = maxTime;
+            StartCoroutine(Clock());
+        }
         if (p2Score == 2) { Debug.Log(player2.characterName + " won"); }
         else if (p1Score == 2) { Debug.Log(player1.characterName + " won"); }
         player1.transform.position = new Vector3(p1ResetPosX, p1ResetPosY, player1.transform.position.z);
         player2.transform.position = new Vector3(p2ResetPosX, p2ResetPosY, player2.transform.position.z);
         player1.currentHealth = player1.health;
         player2.currentHealth = player2.health;
+        timeCounter = maxTime;
+        isReseting = false;
     }
 }
 

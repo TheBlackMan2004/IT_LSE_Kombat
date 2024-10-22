@@ -756,12 +756,18 @@ MonoBehaviour:
   player2: {fileID: 1194289671}
   healthBar1: {fileID: 397802498}
   healthBar2: {fileID: 271866336}
+  roundsWon:
+  - {fileID: 925887181}
+  - {fileID: 186018862}
+  - {fileID: 554700279}
+  - {fileID: 1581430377}
   p1ResetPosX: -6.5
   p1ResetPosY: -4.39
   p2ResetPosX: 6.2
   p2ResetPosY: -4.39
   p1Score: 0
   p2Score: 0
+  isReseting: 0
 --- !u!4 &320680773
 Transform:
   m_ObjectHideFlags: 0
@@ -3630,6 +3636,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player2
       objectReference: {fileID: 0}
+    - target: {fileID: 9118452650221118136, guid: 55edda0765efb8e43b43caf329533a87,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: dea096907a1345247a2b88c60d21540a, type: 2}
     - target: {fileID: 9118452650221118140, guid: 55edda0765efb8e43b43caf329533a87,
         type: 3}
       propertyPath: m_RootOrder
