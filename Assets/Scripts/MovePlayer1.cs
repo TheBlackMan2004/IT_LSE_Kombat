@@ -2,9 +2,13 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public class MovePlayer1 : MonoBehaviour
 {
+    public TextMeshProUGUI timeCounterText;
+    int timeCounter=90;
+   [SerializeField] int maxTime = 90;
     public GameObject backg;
     private float horizontal1;
     private float horizontal2;
@@ -21,7 +25,6 @@ public class MovePlayer1 : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     public CharacterBase player1;
     public CharacterBase player2;
-
     public HealthBar healthBar1;
     public HealthBar healthBar2;
 
@@ -35,8 +38,10 @@ public class MovePlayer1 : MonoBehaviour
 
     private void Start()
     {
+        timeCounter = maxTime;
         healthBar1.SetMaxHealth(player1.health);
         healthBar2.SetMaxHealth(player2.health);
+        StartCoroutine(Clock());
     }
 
     private void Awake()
@@ -86,7 +91,7 @@ public class MovePlayer1 : MonoBehaviour
             currentSpeed2 = speed;
             crouchCollider2.enabled = true;
         }
-        if(player1.currentHealth<=0 || player2.currentHealth<=0)
+        if(player1.currentHealth<=0 || player2.currentHealth<=0 || timeCounter<=0)
         {
             ResetScene();
         }
@@ -123,14 +128,7 @@ public class MovePlayer1 : MonoBehaviour
     }
     private void ResetScene()
     {
-        if (player1.currentHealth <= 0) p2Score++;
-        else p1Score++;
-        if (p2Score == 2) { Debug.Log(player2.characterName + " won"); return; }
-        else if  (p1Score == 2){ Debug.Log(player1.characterName + " won"); return; }
-        player1.transform.position = new Vector3(p1ResetPosX, p1ResetPosY, player1.transform.position.z);
-        player2.transform.position = new Vector3(p2ResetPosX, p2ResetPosY, player2.transform.position.z);
-        player1.currentHealth = player1.health;
-        player2.currentHealth = player2.health;
+       StartCoroutine(Reset());
     }
     IEnumerator Delay1(float delay)
     {
@@ -147,6 +145,28 @@ public class MovePlayer1 : MonoBehaviour
         yield return new WaitForSeconds(delay);
         currentSpeed2 = speed;
         canAttack = true;
+    }
+    IEnumerator Clock()
+    {
+        for(int i=maxTime; i>0; i--)
+        {
+            timeCounter--;
+            timeCounterText.text = timeCounter.ToString();
+            yield return new WaitForSeconds(1f);
+        }
+    }
+    IEnumerator Reset()
+    {
+        timeCounter = maxTime;
+        yield return new WaitForSeconds(3f);
+        if (player1.currentHealth <= 0) p2Score++;
+        else p1Score++;
+        if (p2Score == 2) { Debug.Log(player2.characterName + " won"); }
+        else if (p1Score == 2) { Debug.Log(player1.characterName + " won"); }
+        player1.transform.position = new Vector3(p1ResetPosX, p1ResetPosY, player1.transform.position.z);
+        player2.transform.position = new Vector3(p2ResetPosX, p2ResetPosY, player2.transform.position.z);
+        player1.currentHealth = player1.health;
+        player2.currentHealth = player2.health;
     }
 }
 
