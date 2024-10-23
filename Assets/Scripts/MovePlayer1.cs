@@ -35,6 +35,7 @@ public class MovePlayer1 : MonoBehaviour
     bool canAttack = true;
     public int p1Score;
     public int p2Score;
+    public int maxScore=2;
   public  bool isReseting = false;
     private void Start()
     {
@@ -159,14 +160,15 @@ public class MovePlayer1 : MonoBehaviour
     IEnumerator Reset()
     {
         isReseting = true;
-        yield return new WaitForSeconds(3f);
         if (player1.currentHealth <= 0)
         {
+            if (p2Score < maxScore) 
             p2Score++;
             roundsWon[p2Score + 1].SetActive(true);
         }
         else if(player2.currentHealth<=0)
         {
+            if(p1Score<maxScore)
             p1Score++;
             roundsWon[p1Score - 1].SetActive(true);
         }
@@ -174,16 +176,26 @@ public class MovePlayer1 : MonoBehaviour
         {
             if (player1.currentHealth > player2.currentHealth)
             {
+                if(p1Score<maxScore)
                 p1Score++;
                 roundsWon[p2Score + 1].SetActive(true);
             }
 
-            else
+            else if(player2.currentHealth>player1.currentHealth)
             {
+                if(p2Score<maxScore)
                 p2Score++;
                 roundsWon[p1Score - 1].SetActive(true);
             }
-
+            else
+            {
+                if(p1Score<maxScore)
+                p1Score++;
+                if(p2Score<maxScore)
+                p2Score++;
+                roundsWon[p2Score + 1].SetActive(true);
+                roundsWon[p1Score - 1].SetActive(true);
+            }
             timeCounter = maxTime;
             StartCoroutine(Clock());
         }
@@ -194,6 +206,9 @@ public class MovePlayer1 : MonoBehaviour
         player1.currentHealth = player1.health;
         player2.currentHealth = player2.health;
         timeCounter = maxTime;
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(10f);
+        Time.timeScale = 1;
         isReseting = false;
     }
 }

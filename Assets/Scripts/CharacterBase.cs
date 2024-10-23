@@ -10,7 +10,8 @@ public class CharacterBase : MonoBehaviour
     public Ability firstAbility;
     public Ability secondAbility;
     public string firstAbilityKey;
-   ///public Ultimate ultimate;
+    public string ultimateKey;
+    public Ultimate ultimate;
     public int kickDamage;
     public int punchDamage;
    public bool facesRight = false;
@@ -35,5 +36,18 @@ public class CharacterBase : MonoBehaviour
             }
             
         }    
+        else if(Input.GetButtonDown(ultimateKey) && ultimate.ultimateCharge>=ultimate.ultimateMaxCharge)
+        {
+            ultimate.ultimateCharge = 0;
+            StartCoroutine(Ult());
+        }
+    }
+    IEnumerator Ult()
+    {
+        punchDamage *= 2;
+        kickDamage *= 2;
+        yield return new WaitForSeconds(5f);
+        punchDamage /= 2;
+        kickDamage /= 2;
     }
 }

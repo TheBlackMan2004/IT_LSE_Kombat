@@ -201,6 +201,7 @@ GameObject:
   - component: {fileID: 9118452650221118131}
   - component: {fileID: 9118452650221118116}
   - component: {fileID: 1093266407494999429}
+  - component: {fileID: 1451492427}
   m_Layer: 8
   m_Name: Guta
   m_TagString: Untagged
@@ -434,6 +435,8 @@ MonoBehaviour:
   firstAbility: {fileID: 1093266407494999429}
   secondAbility: {fileID: 0}
   firstAbilityKey: Ability21
+  ultimateKey: Ultimate2
+  ultimate: {fileID: 1451492427}
   kickDamage: 10
   punchDamage: 10
   facesRight: 0
@@ -478,6 +481,21 @@ MonoBehaviour:
   projectile: {fileID: 3550423846363864583, guid: 8b392bfc61490724e8d8b404b3265cc3,
     type: 3}
   spawnPoint: {fileID: 9118452651279159086}
+--- !u!114 &1451492427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9118452650221118130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d264fd490e4b0fe48b407a01ee0cea55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ultimateCharge: 0
+  ultimateMaxCharge: 100
+  ultimateChargePerHit: 15
 --- !u!1 &9118452650274424984
 GameObject:
   m_ObjectHideFlags: 0

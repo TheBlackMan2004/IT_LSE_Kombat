@@ -13,7 +13,6 @@ public class CombatJuc : MonoBehaviour
     public float MarimeAtacPicior = 0.5f;
     bool isAttacking = false;
     public LayerMask LayerInamici;
-
     private void Start()
     {
 
@@ -44,7 +43,10 @@ public class CombatJuc : MonoBehaviour
         {
             
             if (enemy.GetComponent<CharacterBase>().characterName != this.GetComponent<CharacterBase>().characterName)
+            {
                 enemy.GetComponent<CharacterBase>().TakeDamage(this.GetComponent<CharacterBase>().punchDamage);
+                this.GetComponent<CharacterBase>().ultimate.ChargeUlt();
+            }
         }
         StartCoroutine(AttackDelay());
         //isAttacking = false;
@@ -59,10 +61,12 @@ public class CombatJuc : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             if (enemy.GetComponent<CharacterBase>().characterName != this.GetComponent<CharacterBase>().characterName)
+            {
                 enemy.GetComponent<CharacterBase>().TakeDamage(this.GetComponent<CharacterBase>().kickDamage);
+                this.GetComponent<CharacterBase>().ultimate.ChargeUlt();
+            }
         }
         StartCoroutine(AttackDelay());
-        //isAttacking = false;
     }
     void OnDrawGizmosSelected()
     {

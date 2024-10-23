@@ -767,6 +767,7 @@ MonoBehaviour:
   p2ResetPosY: -4.39
   p1Score: 0
   p2Score: 0
+  maxScore: 2
   isReseting: 0
 --- !u!4 &320680773
 Transform:
@@ -3636,11 +3637,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player2
       objectReference: {fileID: 0}
-    - target: {fileID: 9118452650221118136, guid: 55edda0765efb8e43b43caf329533a87,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: dea096907a1345247a2b88c60d21540a, type: 2}
     - target: {fileID: 9118452650221118140, guid: 55edda0765efb8e43b43caf329533a87,
         type: 3}
       propertyPath: m_RootOrder
