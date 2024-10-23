@@ -30,6 +30,7 @@ public class Animati_crt : MonoBehaviour
         bool merge = animator.GetBool("Merge");
         bool mersDreapta = Input.GetKey(rightButton);
         bool mersStanga = Input.GetKey(leftButton);
+        
         bool crouch = Input.GetKey(isCrouch);
         if (Input.GetKey(isCrouch))
         {
