@@ -10,6 +10,7 @@ public class MovePlayer1 : MonoBehaviour
     int timeCounter=90;
    [SerializeField] int maxTime = 90;
     public GameObject backg;
+    public GameObject meniuplayer1;
     private float horizontal1;
     private float horizontal2;
     public float currentSpeed = 8f;
@@ -32,6 +33,8 @@ public class MovePlayer1 : MonoBehaviour
     [SerializeField] float p1ResetPosY = -4.39f;
     [SerializeField] float p2ResetPosX = 6.2f;
     [SerializeField] float p2ResetPosY = -4.39f;
+    [SerializeField] GameObject winMenu1;
+    [SerializeField] GameObject winMenu2;
     bool canAttack = true;
     public int p1Score;
     public int p2Score;
@@ -47,13 +50,23 @@ public class MovePlayer1 : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1;
         backg.SetActive(true);
     }
     void Update()
     {
         healthBar1.SetHealth(player1.currentHealth);
         healthBar2.SetHealth(player2.currentHealth);
-
+        if(p1Score==maxScore)
+        {
+            winMenu1.SetActive(true);
+            Time.timeScale = 0;
+        }
+        if (p2Score == maxScore)
+        {
+            winMenu2.SetActive(true);
+            Time.timeScale = 0;
+        }
         if (IsGrounded())
         {
             horizontal1 = Input.GetAxisRaw("Horizontal1");
@@ -96,6 +109,7 @@ public class MovePlayer1 : MonoBehaviour
         {
             if(!isReseting)
                 ResetScene();
+            
         }
         if(Input.GetButtonDown("Punch1") && canAttack)
         {
@@ -199,15 +213,13 @@ public class MovePlayer1 : MonoBehaviour
             timeCounter = maxTime;
             StartCoroutine(Clock());
         }
-        if (p2Score == 2) { Debug.Log(player2.characterName + " won"); }
-        else if (p1Score == 2) { Debug.Log(player1.characterName + " won"); }
         player1.transform.position = new Vector3(p1ResetPosX, p1ResetPosY, player1.transform.position.z);
         player2.transform.position = new Vector3(p2ResetPosX, p2ResetPosY, player2.transform.position.z);
         player1.currentHealth = player1.health;
         player2.currentHealth = player2.health;
         timeCounter = maxTime;
         Time.timeScale = 0;
-        yield return new WaitForSecondsRealtime(10f);
+        yield return new WaitForSecondsRealtime(3f);
         Time.timeScale = 1;
         isReseting = false;
     }

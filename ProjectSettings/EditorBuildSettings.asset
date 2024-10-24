@@ -6,9 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Meniu_Start.unity
+    guid: ffce4edccf644a5488b08237a8f68f01
+  - enabled: 1
     path: Assets/Scenes/MeniuIntrareLupta.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/fightScene.unity
     guid: 490db3767004df748bacc5b46b5cee82
+  - enabled: 1
+    path: Assets/Scenes/fightScene 1.unity
+    guid: 916add4bd1b50a746a3f920e82134728
   m_configObjects: {}
